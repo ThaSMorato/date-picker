@@ -1,30 +1,57 @@
 import * as Popover from '@radix-ui/react-popover'
 
+import { ListCalendar } from './list-calendar'
 import { RangeCalendar as RangeCalendarComponent } from './range-calendar'
 import { SimpleCalendar as SimpleCalendarComponent } from './simple-calendar'
+
+interface CalendarProps {
+  onChange?: (dates: Date[]) => void
+  value?: Date[]
+}
+
+interface SimpleCalendarProps {
+  onChange?: (dates: Date) => void
+  value?: Date
+}
 
 const DatePickerRoot = Popover.Root
 
 const DatePickerTrigger = Popover.Trigger
 
-const SimpleCalendar = () => {
+const SimpleCalendar = ({ onChange, value }: SimpleCalendarProps) => {
   return (
     <Popover.Portal>
       <Popover.Content>
-        <SimpleCalendarComponent />
+        <SimpleCalendarComponent onChange={onChange} value={value} />
       </Popover.Content>
     </Popover.Portal>
   )
 }
 
-const RangeCalendar = () => {
+const RangeCalendar = ({ onChange, value }: CalendarProps) => {
   return (
     <Popover.Portal>
       <Popover.Content>
-        <RangeCalendarComponent />
+        <RangeCalendarComponent onChange={onChange} value={value} />
       </Popover.Content>
     </Popover.Portal>
   )
 }
 
-export { DatePickerRoot, DatePickerTrigger, RangeCalendar, SimpleCalendar }
+const OptionsCalendar = ({ onChange, value }: CalendarProps) => {
+  return (
+    <Popover.Portal>
+      <Popover.Content>
+        <ListCalendar onChange={onChange} value={value} />
+      </Popover.Content>
+    </Popover.Portal>
+  )
+}
+
+export {
+  DatePickerRoot,
+  DatePickerTrigger,
+  OptionsCalendar,
+  RangeCalendar,
+  SimpleCalendar,
+}
