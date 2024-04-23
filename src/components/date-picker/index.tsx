@@ -6,12 +6,12 @@ import { ListCalendar } from './list-calendar'
 import { RangeCalendar as RangeCalendarComponent } from './range-calendar'
 import { SimpleCalendar as SimpleCalendarComponent } from './simple-calendar'
 
-interface CalendarProps {
+export interface CalendarProps {
   onChange?: (dates: string[]) => void
   value?: Date[]
 }
 
-interface SimpleCalendarProps {
+export interface SimpleCalendarProps {
   onChange?: (dates: string) => void
   value?: Date
 }

@@ -95,14 +95,14 @@ export const Calendar = ({
         </div>
         <div className="flex gap-2">
           <button
-            className="h-5 w-5 flex items-center justify-center dark:text-gray-base"
+            className="h-5 w-5 flex items-center justify-center text-gray-dark dark:text-gray-base"
             onClick={handlePreviusMonth}
           >
             <ChevronLeft className="h-5" />
           </button>
 
           <button
-            className="h-5 w-5 flex items-center justify-center dark:text-gray-base"
+            className="h-5 w-5 flex items-center justify-center text-gray-dark dark:text-gray-base"
             onClick={handleNextMonth}
           >
             <ChevronRight className="h-5" />

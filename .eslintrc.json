@@ -1,5 +1,6 @@
 {
   "extends": [
-    "@thasmorato/eslint-config/react"
+    "@thasmorato/eslint-config/react",
+    "plugin:storybook/recommended"
   ]
 }
