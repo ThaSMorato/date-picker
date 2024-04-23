@@ -22,7 +22,7 @@ export const SimpleCalendar = ({ onChange, value }: SimpleCalendarProps) => {
   }
 
   return (
-    <div className="flex flex-col gap-3 p-5 rounded-lg">
+    <div className="flex flex-col gap-3 p-5 rounded-lg bg-white dark:bg-gray-dark">
       <Calendar
         value={selectedDate ? [selectedDate] : null}
         setSelectedDates={handleOnClickDate}

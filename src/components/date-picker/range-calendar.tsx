@@ -57,7 +57,7 @@ export const RangeCalendar = ({ onChange, value }: RangeProps) => {
   }
 
   return (
-    <div className="flex flex-col gap-3 p-5 rounded-lg">
+    <div className="flex flex-col gap-3 p-5 rounded-lg bg-white dark:bg-gray-dark">
       <Calendar value={selectedDates} setSelectedDates={handleOnClickDate} />
       <div className="flex items-center justify-end gap-4">
         <Button variant="ghost" onClick={() => setSelectedDates(null)}>

@@ -23,7 +23,7 @@ export default {
           // secondary: '',
           faded: {
             primary: '#F1F2FF',
-            // secondary: '',
+            secondary: '#ECEEFF',
           },
           dark: '#131FA3',
         },
