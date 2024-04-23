@@ -8,7 +8,7 @@ enum Variant {
   'outlined' = 'text-blue-primary border hover:text-blue-dark border-blue-primary hover:border-blue-dark dark:text-white dark:hover:text-blue-faded-secondary dark:hover:border-blue-faded-secondary dark:hover:bg-gray-dark-muted',
 }
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant: 'ghost' | 'primary' | 'outlined'
   children: ReactNode
 }

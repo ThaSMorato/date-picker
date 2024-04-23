@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import { cn } from '../../utils'
 
-interface PresetButtonProps {
+export interface PresetButtonProps {
   isActive?: boolean
   children: ReactNode
   onClick: () => void
