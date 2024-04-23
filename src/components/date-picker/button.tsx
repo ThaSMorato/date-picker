@@ -3,9 +3,9 @@ import { ButtonHTMLAttributes, ReactNode } from 'react'
 import { cn } from '../../utils'
 
 enum Variant {
-  'ghost' = 'text-blue-primary hover:text-blue-dark',
-  'primary' = 'text-white bg-blue-primary hover:bg-blue-dark',
-  'outlined' = 'text-blue-primary hover:text-blue-dark border-blue-primary hover:border-blue-dark border',
+  'ghost' = 'text-blue-primary hover:text-blue-dark dark:text-blue-faded-primary dark:hover:text-gray-base',
+  'primary' = 'text-white bg-blue-primary hover:bg-blue-dark dark:hover:bg-gray-dark-muted',
+  'outlined' = 'text-blue-primary border hover:text-blue-dark border-blue-primary hover:border-blue-dark dark:text-white dark:hover:text-blue-faded-secondary dark:hover:border-blue-faded-secondary dark:hover:bg-gray-dark-muted',
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

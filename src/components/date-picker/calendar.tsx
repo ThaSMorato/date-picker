@@ -86,19 +86,23 @@ export const Calendar = ({
     <div className="flex flex-col gap-3">
       <div className="flex justify-between items-center">
         <div className="flex gap-1">
-          <p className="text-gray-dark text-sm">{currentMonth}</p>
-          <p className="text-gray-dark text-sm">{currentYear}</p>
+          <p className="text-gray-dark dark:text-gray-base text-sm">
+            {currentMonth}
+          </p>
+          <p className="text-gray-dark dark:text-gray-base text-sm">
+            {currentYear}
+          </p>
         </div>
         <div className="flex gap-2">
           <button
-            className="h-5 w-5 flex items-center justify-center"
+            className="h-5 w-5 flex items-center justify-center dark:text-gray-base"
             onClick={handlePreviusMonth}
           >
             <ChevronLeft className="h-5" />
           </button>
 
           <button
-            className="h-5 w-5 flex items-center justify-center"
+            className="h-5 w-5 flex items-center justify-center dark:text-gray-base"
             onClick={handleNextMonth}
           >
             <ChevronRight className="h-5" />
@@ -115,8 +119,8 @@ export const Calendar = ({
                   className={cn(
                     'text-xs w-8 h-8 font-normal',
                     index > 0 && index < 6
-                      ? 'text-gray-dark'
-                      : 'text-red-primary',
+                      ? 'text-gray-dark dark:text-gray-base'
+                      : 'text-red-primary dark:text-red-secondary',
                   )}
                 >
                   {weekday}
@@ -135,20 +139,21 @@ export const Calendar = ({
                       key={date.toString()}
                       className={cn(
                         !disabled &&
-                          'hover:bg-blue-faded-primary hover:rounded-lg hover:text-blue-primary hover:cursor-pointer',
+                          'hover:bg-blue-faded-primary hover:rounded-lg hover:text-blue-primary hover:cursor-pointer dark:hover:text-white dark:hover:bg-gray-dark-muted',
                         'text-xs w-8 h-8 font-normal text-center',
                         index > 0 && index < 6
-                          ? 'text-gray-dark'
-                          : 'text-red-primary',
-                        isCurrentDate && 'text-blue-primary font-semibold',
+                          ? 'text-gray dark:text-gray-base'
+                          : 'text-red-primary dark:text-red-secondary',
+                        isCurrentDate &&
+                          'text-blue-primary font-semibold dark:text-white',
                         state === DatePosition.UNIQUE &&
-                          'rounded-lg text-white bg-blue-primary',
+                          'rounded-lg text-white bg-blue-primary dark:text-white',
                         state === DatePosition.FIRST &&
-                          'rounded-l-lg text-white bg-blue-primary',
+                          'rounded-l-lg text-white bg-blue-primary dark:text-white',
                         state === DatePosition.SECOND &&
-                          'rounded-r-lg text-white bg-blue-primary',
+                          'rounded-r-lg text-white bg-blue-primary dark:text-white',
                         state === DatePosition.MIDDLE &&
-                          'text-blue-primary bg-blue-faded-primary',
+                          'text-blue-primary bg-blue-faded-primary dark:text-white dark:bg-gray-dark-muted',
                       )}
                       onClick={() => setSelectedDates(date.toDate())}
                     >

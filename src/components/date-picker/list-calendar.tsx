@@ -120,7 +120,7 @@ export const ListCalendar = ({ onChange, value }: RangeProps) => {
   }
 
   return (
-    <div className="flex flex-col gap-6 p-5 rounded-lg">
+    <div className="flex flex-col gap-6 p-5 rounded-lg bg-white dark:bg-gray-dark">
       <div className="flex gap-6 items-start">
         <div>
           <ul>

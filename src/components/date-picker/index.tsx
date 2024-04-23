@@ -1,3 +1,5 @@
+import '../../styles/index.css'
+
 import * as Popover from '@radix-ui/react-popover'
 
 import { ListCalendar } from './list-calendar'
