@@ -1,10 +1,11 @@
+import dayjs from 'dayjs'
 import { useState } from 'react'
 
 import { Button } from './button'
 import { Calendar } from './calendar'
 
 interface SimpleCalendarProps {
-  onChange?: (date: Date) => void
+  onChange?: (date: string) => void
   value?: Date
 }
 
@@ -13,7 +14,7 @@ export const SimpleCalendar = ({ onChange, value }: SimpleCalendarProps) => {
 
   const handleSelectDate = () => {
     if (onChange && selectedDate) {
-      return onChange(selectedDate)
+      return onChange(dayjs(selectedDate).format('YYYY-MM-DD'))
     }
   }
 
