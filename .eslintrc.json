@@ -1,0 +1,5 @@
+{
+  "extends": [
+    "@thasmorato/eslint-config/react"
+  ]
+}
