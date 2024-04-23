@@ -5,7 +5,7 @@ import { Button } from './button'
 import { Calendar } from './calendar'
 
 interface RangeProps {
-  onChange?: (dates: Date[]) => void
+  onChange?: (dates: string[]) => void
   value?: Date[]
 }
 
@@ -16,30 +16,35 @@ export const RangeCalendar = ({ onChange, value }: RangeProps) => {
 
   const handleSelectDate = () => {
     if (onChange && selectedDates) {
-      return onChange(selectedDates)
+      const dates = selectedDates.map((date) =>
+        dayjs(date).format('YYYY-MM-DD'),
+      )
+
+      return onChange(dates)
     }
   }
 
   const handleOnClickDate = (date: Date) => {
+    const dayjsDate = dayjs(date).set('hour', 5)
+
     if (selectedDates === null || selectedDates.length <= 0) {
-      return setSelectedDates([date])
+      return setSelectedDates([dayjsDate.toDate()])
     }
-    const dayjsDate = dayjs(date)
 
     if (selectedDates.length >= 2) {
       const [date1, date2] = selectedDates
-      const dayjsDate1 = dayjs(date1)
-      const dayjsDate2 = dayjs(date2)
+      const dayjsDate1 = dayjs(date1).set('hour', 5)
+      const dayjsDate2 = dayjs(date2).set('hour', 5)
 
       if (dayjsDate1.isSame(dayjsDate) || dayjsDate2.isSame(dayjsDate)) {
         return
       }
 
       if (dayjsDate.isAfter(dayjsDate2)) {
-        return setSelectedDates([date1, date])
+        return setSelectedDates([dayjsDate1.toDate(), dayjsDate.toDate()])
       }
 
-      return setSelectedDates([date, date2])
+      return setSelectedDates([dayjsDate.toDate(), dayjsDate2.toDate()])
     }
 
     const [date1] = selectedDates
@@ -50,10 +55,10 @@ export const RangeCalendar = ({ onChange, value }: RangeProps) => {
     }
 
     if (dayjsDate1.isBefore(dayjsDate)) {
-      return setSelectedDates([date1, date])
+      return setSelectedDates([dayjsDate1.toDate(), dayjsDate.toDate()])
     }
 
-    return setSelectedDates([date, date1])
+    return setSelectedDates([dayjsDate.toDate(), dayjsDate1.toDate()])
   }
 
   return (

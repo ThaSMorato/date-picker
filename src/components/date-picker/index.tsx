@@ -7,12 +7,12 @@ import { RangeCalendar as RangeCalendarComponent } from './range-calendar'
 import { SimpleCalendar as SimpleCalendarComponent } from './simple-calendar'
 
 interface CalendarProps {
-  onChange?: (dates: Date[]) => void
+  onChange?: (dates: string[]) => void
   value?: Date[]
 }
 
 interface SimpleCalendarProps {
-  onChange?: (dates: Date) => void
+  onChange?: (dates: string) => void
   value?: Date
 }
 

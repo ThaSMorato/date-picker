@@ -6,7 +6,7 @@ import { Calendar } from './calendar'
 import { PresetButton } from './preset-button'
 
 interface RangeProps {
-  onChange?: (dates: Date[]) => void
+  onChange?: (dates: string[]) => void
   value?: Date[]
 }
 
@@ -20,53 +20,53 @@ enum ButtonState {
   CUSTOM = 'CUSTOM',
 }
 
-const TODAY = dayjs().startOf('day').set('hour', 5)
-
-const VALUES_MAP = new Map([
-  [ButtonState.TODAY, [TODAY.toDate()]],
-  [ButtonState.YESTERDAY, [TODAY.subtract(1, 'day').toDate()]],
-  [
-    ButtonState.WEEK,
-    [
-      dayjs().startOf('week').startOf('day').set('hour', 5).toDate(),
-      dayjs().endOf('week').startOf('day').set('hour', 5).toDate(),
-    ],
-  ],
-  [ButtonState.THIRTY, [TODAY.subtract(30, 'day').toDate(), TODAY.toDate()]],
-  [
-    ButtonState.THIS_MONTH,
-    [
-      dayjs().startOf('month').startOf('day').set('hour', 5).toDate(),
-      dayjs().endOf('month').startOf('day').set('hour', 5).toDate(),
-    ],
-  ],
-  [
-    ButtonState.LAST_MONTH,
-    [
-      dayjs()
-        .subtract(1, 'month')
-        .startOf('month')
-        .startOf('day')
-        .set('hour', 5)
-        .toDate(),
-      dayjs()
-        .subtract(1, 'month')
-        .endOf('month')
-        .startOf('day')
-        .set('hour', 5)
-        .toDate(),
-    ],
-  ],
-])
-
 export const ListCalendar = ({ onChange, value }: RangeProps) => {
   const [selectedDates, setSelectedDates] = useState<Date[] | null>(
     value ?? null,
   )
 
+  const TODAY = dayjs(new Date()).startOf('day').set('hour', 5)
+
+  const VALUES_MAP = new Map([
+    [ButtonState.TODAY, [TODAY.toDate()]],
+    [ButtonState.YESTERDAY, [TODAY.subtract(1, 'day').toDate()]],
+    [ButtonState.WEEK, [TODAY.subtract(7, 'days').toDate(), TODAY.toDate()]],
+    [ButtonState.THIRTY, [TODAY.subtract(30, 'day').toDate(), TODAY.toDate()]],
+    [
+      ButtonState.THIS_MONTH,
+      [
+        dayjs(new Date())
+          .startOf('month')
+          .startOf('day')
+          .set('hour', 5)
+          .toDate(),
+        dayjs(new Date()).endOf('month').startOf('day').set('hour', 5).toDate(),
+      ],
+    ],
+    [
+      ButtonState.LAST_MONTH,
+      [
+        dayjs(new Date())
+          .subtract(1, 'month')
+          .startOf('month')
+          .startOf('day')
+          .set('hour', 5)
+          .toDate(),
+        dayjs(new Date())
+          .subtract(1, 'month')
+          .endOf('month')
+          .startOf('day')
+          .set('hour', 5)
+          .toDate(),
+      ],
+    ],
+  ])
+
   const handleSelectDate = () => {
     if (onChange && selectedDates) {
-      return onChange(selectedDates)
+      return onChange(
+        selectedDates.map((date) => dayjs(date).format('YYYY-MM-DD')),
+      )
     }
   }
 
