@@ -9,12 +9,12 @@ enum Variant {
 }
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: 'ghost' | 'primary' | 'outlined'
+  variant?: 'ghost' | 'primary' | 'outlined'
   children: ReactNode
 }
 
 export const Button = ({
-  variant,
+  variant = 'primary',
   children,
   className,
   ...rest
